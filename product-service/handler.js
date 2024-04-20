@@ -6,6 +6,7 @@ const getProductsList = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(products),
+    headers:{ 'Access-Control-Allow-Origin' : '*' },
   };
 };
 
@@ -23,6 +24,7 @@ const getProductsById = async (event) => {
     return {
         statusCode: 200,
         body: JSON.stringify(result),
+        headers:{ 'Access-Control-Allow-Origin' : '*' },
     };
 };
 
