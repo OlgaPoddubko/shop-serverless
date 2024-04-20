@@ -58,14 +58,14 @@ provider:
 
 functions:
   getProductsList:
-    handler: handler.getProductsList
+    handler: lambda/getProductsList.getProductsList
     events:
       - http:
          path: products
          method: get
 
   getProductsById:
-    handler: handler.getProductsById
+    handler: lambda/getProductsById.getProductsById
     events:
       - http:
          path: products/{id}

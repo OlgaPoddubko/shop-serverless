@@ -1,14 +1,6 @@
 'use strict';
 
-const products = require('./data');
-
-const getProductsList = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(products),
-    headers:{ 'Access-Control-Allow-Origin' : '*' },
-  };
-};
+const { products } = require('../data');
 
 const getProductsById = async (event) => {
     const productId = event.pathParameters?.id;
@@ -28,4 +20,4 @@ const getProductsById = async (event) => {
     };
 };
 
-module.exports = { getProductsList, getProductsById };
+module.exports = { getProductsById };

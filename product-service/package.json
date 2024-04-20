@@ -1,0 +1,17 @@
+{
+  "name": "product-service",
+  "description": "Serverless aws-nodejs template",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "sls deploy",
+    "initiate-products": "ts-node ./db/initiateProductsTable.js",
+    "initiate-stock": "ts-node ./db/initiateStockTable.js"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}
