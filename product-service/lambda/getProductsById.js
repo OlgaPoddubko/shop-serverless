@@ -1,5 +1,3 @@
-'use strict';
-
 const AWS = require('aws-sdk');
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
@@ -13,7 +11,7 @@ exports.getProductsById = async (event) => {
             Key: {
                 id: productId
             },
-            ProjectionExpression: 'id, title, description, price, #s.count',
+            ProjectionExpression: 'id, title, description, price, #s.amount',
             ExpressionAttributeNames: { '#s': 'stock' },
         };
 

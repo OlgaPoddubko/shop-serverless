@@ -41,27 +41,27 @@ const products = [
 const stock = [
     {
         "product_id": "19ba3d6a-f8ed-491b-a192-0a33b71b38c4",
-        "count": 50
+        "amount": 50
     },
     {
         "product_id": "29ba3d6a-f8ed-491b-a192-0a33b71b38c4",
-        "count": 40
+        "amount": 40
     },
     {
         "product_id": "39ba3d6a-f8ed-491b-a192-0a33b71b38c4",
-        "count": 30
+        "amount": 30
     },
     {
         "product_id": "49ba3d6a-f8ed-491b-a192-0a33b71b38c4",
-        "count": 20
+        "amount": 20
     },
     {
         "product_id": "59ba3d6a-f8ed-491b-a192-0a33b71b38c4",
-        "count": 10
+        "amount": 10
     },
     {
         "product_id": "69ba3d6a-f8ed-491b-a192-0a33b71b38c4",
-        "count": 90
+        "amount": 90
     }
 ];
 module.exports = { products, stock };

@@ -1,5 +1,3 @@
-'use strict';
-
 const AWS = require('aws-sdk');
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
@@ -7,17 +5,40 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 exports.getProductsList = async (event) => {
     try {
         const params = {
-            TableName: 'products',
-            ProjectionExpression: 'id, title, description, price, #s.count',
-            ExpressionAttributeNames: { '#s': 'stock' },
-            KeyConditionExpression: 'id = #s.product_id',
+            TableName: process.env.PRODUCTS_TABLE_NAME,
+            ProjectionExpression: 'id, title, description, price',
         };
+        const productData = await dynamodb.scan(params).promise();
 
-        const data = await dynamodb.query(params).promise();
+        if (productData.Items.length === 0) {
+            return {
+                statusCode: 404,
+                body: JSON.stringify({ message: 'No products found' }),
+                headers: {
+                    'Access-Control-Allow-Origin' : '*',
+                    'Content-Type': 'application/json',
+                },
+            };
+        }
+
+        const productsWithStock = await Promise.all(productData.Items.map(async (product) => {
+            const stockParams = {
+                TableName: process.env.STOCK_TABLE_NAME,
+                Key: {
+                    product_id: product.id
+                },
+            };
+            const stockData = await dynamodb.get(stockParams).promise();
+
+            return {
+                ...product,
+                amount: stockData.Item ? stockData.Item.amount : 0
+            };
+        }));
 
         return {
             statusCode: 200,
-            body: JSON.stringify(data.Items),
+            body: JSON.stringify(productsWithStock),
             headers: {
                 'Access-Control-Allow-Origin' : '*',
                 'Content-Type': 'application/json',

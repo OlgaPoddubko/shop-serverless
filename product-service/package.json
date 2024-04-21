@@ -5,7 +5,10 @@
   "scripts": {
     "deploy": "sls deploy",
     "initiate-products": "ts-node ./db/initiateProductsTable.js",
-    "initiate-stock": "ts-node ./db/initiateStockTable.js"
+    "initiate-stock": "ts-node ./db/initiateStockTable.js",
+    "create-product": "serverless invoke local --function createProduct",
+    "get-products-list": "serverless invoke local --function getProductsList",
+    "get-product": "serverless invoke local --function getProductsById"
   },
   "devDependencies": {
     "serverless": "^3.38.0",
