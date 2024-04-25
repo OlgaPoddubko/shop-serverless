@@ -1,0 +1,21 @@
+{
+  "name": "product-service",
+  "description": "Serverless aws-nodejs template",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "sls deploy",
+    "initiate-products": "ts-node ./db/initiateProductsTable.js",
+    "initiate-stock": "ts-node ./db/initiateStockTable.js",
+    "create-product": "serverless invoke local --function createProduct",
+    "get-products-list": "serverless invoke local --function getProductsList",
+    "get-product": "serverless invoke local --function getProductsById"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1603.0",
+    "typescript": "^5.4.5"
+  }
+}
