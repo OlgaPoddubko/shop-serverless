@@ -1,0 +1,19 @@
+{
+  "name": "import-service",
+  "description": "Serverless import-service.",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "sls deploy",
+    "import-file-parser": "serverless invoke local --function importFileParser",
+    "import-product-files": "serverless invoke local --function importProductFiles"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1603.0",
+    "csv-parser": "^3.0.0",
+    "typescript": "^5.4.5"
+  }
+}
